@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import {
   Box,
   Container,
   Typography,
   Grid,
-  Card,
-  CardContent,
   Avatar,
   Button,
   Tabs,
   Tab,
-  Divider,
   Paper,
 } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
@@ -28,7 +25,6 @@ import {
 import PeopleAltRoundedIcon from "@mui/icons-material/PeopleAltRounded";
 import ClassRoundedIcon from "@mui/icons-material/ClassRounded";
 import SchoolRoundedIcon from "@mui/icons-material/SchoolRounded";
-import TableChartRoundedIcon from "@mui/icons-material/TableChartRounded";
 import InsertChartRoundedIcon from "@mui/icons-material/InsertChartRounded";
 
 const ViewSubject = () => {

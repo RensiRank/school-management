@@ -24,8 +24,6 @@ import {
   groupAttendanceBySubject,
 } from "../../components/attendanceCalculator";
 import CustomPieChart from "../../components/CustomPieChart";
-import { PurpleButton } from "../../components/buttonStyles";
-import { StyledTableCell, StyledTableRow } from "../../components/styles";
 import styled from "styled-components";
 
 const TeacherViewStudent = () => {

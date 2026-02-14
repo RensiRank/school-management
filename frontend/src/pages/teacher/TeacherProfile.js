@@ -7,7 +7,6 @@ import {
   Avatar,
   Divider,
   Box,
-  Button,
 } from "@mui/material";
 import { useSelector } from "react-redux";
 
