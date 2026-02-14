@@ -11,7 +11,7 @@ export const getAllStudents = (id) => async (dispatch) => {
   dispatch(getRequest());
 
   try {
-    const result = await axios.get(`http://localhost:5000/Students/${id}`);
+    const result = await axios.get(`${process.env.REACT_APP_BASE_URL}/Students/${id}`);
     if (result.data.message) {
       dispatch(getFailed(result.data.message));
     } else {
@@ -28,7 +28,7 @@ export const updateStudentFields =
 
     try {
       const result = await axios.put(
-        `http://localhost:5000/${address}/${id}`,
+        `${process.env.REACT_APP_BASE_URL}/${address}/${id}`,
         fields,
         {
           headers: { "Content-Type": "application/json" },
@@ -48,7 +48,7 @@ export const removeStuff = (id, address) => async (dispatch) => {
   dispatch(getRequest());
 
   try {
-    const result = await axios.put(`http://localhost:5000/${address}/${id}`);
+    const result = await axios.put(`${process.env.REACT_APP_BASE_URL}/${address}/${id}`);
     if (result.data.message) {
       dispatch(getFailed(result.data.message));
     } else {
