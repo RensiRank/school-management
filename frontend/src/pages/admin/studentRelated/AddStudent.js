@@ -88,7 +88,7 @@ const AddStudent = ({ situation }) => {
         <>
             <div className="register">
                 <form className="registerForm" onSubmit={submitHandler}>
-                    <span className="registerTitle">Add Student</span>
+                    <span className="registerTitle">Add Student for related class</span>
                     <label>Name</label>
                     <input className="registerInput" type="text" placeholder="Enter student's name..."
                         value={name}
