@@ -100,19 +100,19 @@ const StudentExamMarks = ({ situation }) => {
                             alignItems: 'center',
                             display: 'flex',
                             justifyContent: 'center',
-                           mt:"80px",
+                            mt:"80px",
                         }}
                     >
-                          <Card
-    sx={{
-      maxWidth: 550,
-      width: "100%",
-      p: 3,
-      boxShadow: 3,
-      borderRadius: 3
-    }}
-  >
-    <CardContent>
+                    <Card
+                        sx={{
+                            maxWidth: 550,
+                            width: "100%",
+                            p: 3,
+                            boxShadow: 3,
+                            borderRadius: 3
+                        }}
+                        >
+                        <CardContent>
                      
                             <Stack spacing={1} sx={{ mb: 3 }}>
                                 <Typography variant="h4">

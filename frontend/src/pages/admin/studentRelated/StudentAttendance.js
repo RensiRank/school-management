@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate,useParams } from 'react-router-dom';
 import { getUserDetails } from '../../../redux/userRelated/userHandle';
 import { getSubjectList } from '../../../redux/sclassRelated/sclassHandle';
 import { updateStudentFields } from '../../../redux/studentRelated/studentHandle';
@@ -9,10 +9,12 @@ import {
     Box, InputLabel,
     MenuItem, Select,
     Typography, Stack,
-    TextField, CircularProgress, FormControl
+    TextField, CircularProgress, FormControl,
+    Button
 } from '@mui/material';
 import { PurpleButton } from '../../../components/buttonStyles';
 import Popup from '../../../components/Popup';
+import { Card, CardContent } from "@mui/material";
 
 const StudentAttendance = ({ situation }) => {
     const dispatch = useDispatch();
@@ -20,6 +22,7 @@ const StudentAttendance = ({ situation }) => {
     const { subjectsList } = useSelector((state) => state.sclass);
     const { response, error, statestatus } = useSelector((state) => state.student);
     const params = useParams()
+    const navigate = useNavigate();
 
     const [studentID, setStudentID] = useState("");
     const [subjectName, setSubjectName] = useState("");
@@ -96,20 +99,23 @@ const StudentAttendance = ({ situation }) => {
                 <>
                     <Box
                         sx={{
-                            flex: '1 1 auto',
+                               flex: '1 1 auto',
                             alignItems: 'center',
                             display: 'flex',
-                            justifyContent: 'center'
+                            justifyContent: 'center',
+                            mt:"80px",
                         }}
                     >
-                        <Box
-                            sx={{
-                                maxWidth: 550,
-                                px: 3,
-                                py: '100px',
-                                width: '100%'
-                            }}
+                         <Card
+                        sx={{
+                            maxWidth: 550,
+                            width: "100%",
+                            p: 3,
+                            boxShadow: 3,
+                            borderRadius: 3
+                        }}
                         >
+                        <CardContent>
                             <Stack spacing={1} sx={{ mb: 3 }}>
                                 <Typography variant="h4">
                                     Student Name: {userDetails.name}
@@ -173,19 +179,28 @@ const StudentAttendance = ({ situation }) => {
                                         />
                                     </FormControl>
                                 </Stack>
-
-                                <PurpleButton
-                                    fullWidth
-                                    size="large"
-                                    sx={{ mt: 3 }}
-                                    variant="contained"
-                                    type="submit"
-                                    disabled={loader}
-                                >
-                                    {loader ? <CircularProgress size={24} color="inherit" /> : "Submit"}
-                                </PurpleButton>
+                                <Box display="flex" justifyContent="center" gap={2}>
+                                    <Button
+                                        variant="outlined"
+                                        color="secondary"
+                                        onClick={() => navigate(-1)}
+                                        sx={styles.buttonOutlined}
+                                    >
+                                        Cancel
+                                    </Button>
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        type="submit"
+                                        disabled={loader}
+                                        sx={styles.buttonFilled}
+                                        >
+                                        {loader ? <CircularProgress size={24} color="inherit" /> : "Submit"}
+                                    </Button>
+                                </Box>
+                               
                             </form>
-                        </Box>
+                         </CardContent></Card>
                     </Box>
                     <Popup message={message} setShowPopup={setShowPopup} showPopup={showPopup} />
                 </>
@@ -194,4 +209,22 @@ const StudentAttendance = ({ situation }) => {
     )
 }
 
-export default StudentAttendance
+export default StudentAttendance;
+
+const styles = {
+      buttonFilled: {
+        mt:3,
+    px: 4,
+    py: 1.2,
+    borderRadius: 3,
+    textTransform: "none",
+    fontWeight: 600,
+  },
+  buttonOutlined: {
+    px: 4, mt:3,
+    py: 1.2,
+    borderRadius: 3,
+    textTransform: "none",
+    fontWeight: 600,
+  },
+};
