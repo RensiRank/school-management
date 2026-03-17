@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Box, Table, TableBody, TableContainer, TableHead, Typography, Paper } from '@mui/material'
+import { Box, Table, TableBody, TableContainer, TableHead, Typography, Paper, Button } from '@mui/material'
 import { useNavigate, useParams } from 'react-router-dom';
 import { getTeacherFreeClassSubjects } from '../../../redux/sclassRelated/sclassHandle';
 import { updateTeachSubject } from '../../../redux/teacherRelated/teacherHandle';
@@ -38,7 +38,15 @@ const ChooseSubject = ({ situation }) => {
         return <div>
             <h1>Sorry all subjects have teachers assigned already</h1>
             <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-                <PurpleButton variant="contained"
+                <Button
+                                                                              variant="outlined"
+                                                                              color="secondary"
+                                                                              onClick={() => navigate(-1)}
+                                                                              sx={styles.buttonOutlined}
+                                                                          >
+                                                                              Cancel
+                                                                          </Button>
+                <PurpleButton variant="contained" sx={{marginRight:3}}
                     onClick={() => navigate("/Admin/addsubject/" + classID)}>
                     Add Subjects
                 </PurpleButton>
@@ -105,3 +113,14 @@ const ChooseSubject = ({ situation }) => {
 };
 
 export default ChooseSubject;
+
+const styles = {
+  buttonOutlined: {
+    px: 4,
+    marginRight:3,
+    py: 1.2,
+    borderRadius: 3,
+    textTransform: "none",
+    fontWeight: 600,
+  },
+};
