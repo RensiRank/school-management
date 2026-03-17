@@ -5,7 +5,7 @@ import { registerUser } from '../../../redux/userRelated/userHandle';
 import Popup from '../../../components/Popup';
 import { underControl } from '../../../redux/userRelated/userSlice';
 import { getAllSclasses } from '../../../redux/sclassRelated/sclassHandle';
-import { CircularProgress } from '@mui/material';
+import { Box, Button, Card, CardContent, CircularProgress, Typography } from '@mui/material';
 
 const AddStudent = ({ situation }) => {
     const dispatch = useDispatch()
@@ -86,7 +86,25 @@ const AddStudent = ({ situation }) => {
 
     return (
         <>
-            <div className="register">
+            <Box
+                                sx={{
+                                    flex: '1 1 auto',
+                                    alignItems: 'center',
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                   mt:"80px",
+                                }}
+                            >
+       <Card
+    sx={{
+      maxWidth: 550,
+      width: "100%",
+      p: 3,
+      boxShadow: 3,
+      borderRadius: 3
+    }}
+  >
+    <CardContent>
                 <form className="registerForm" onSubmit={submitHandler}>
                     <span className="registerTitle">Add Student</span>
                     <label>Name</label>
@@ -125,18 +143,48 @@ const AddStudent = ({ situation }) => {
                         onChange={(event) => setPassword(event.target.value)}
                         autoComplete="new-password" required />
 
-                    <button className="registerButton" type="submit" disabled={loader}>
-                        {loader ? (
-                            <CircularProgress size={24} color="inherit" />
-                        ) : (
-                            'Add'
-                        )}
-                    </button>
+                        <Box display="flex" justifyContent="center" gap={2}>
+                                    <Button
+                                        variant="outlined"
+                                        color="secondary"
+                                        onClick={() => navigate(-1)}
+                                        sx={styles.buttonOutlined}
+                                    >
+                                        Cancel
+                                    </Button>
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        type="submit"
+                                        disabled={loader}
+                                        sx={styles.buttonFilled}
+                                        >
+                                        {loader ? <CircularProgress size={24} color="inherit" /> : "Add"}
+                                    </Button>
+                                    </Box>
                 </form>
-            </div>
+            </CardContent></Card></Box>
             <Popup message={message} setShowPopup={setShowPopup} showPopup={showPopup} />
         </>
     )
 }
 
-export default AddStudent
+export default AddStudent;
+
+const styles = {
+      buttonFilled: {
+        mt:3,
+    px: 4,
+    py: 1.2,
+    borderRadius: 3,
+    textTransform: "none",
+    fontWeight: 600,
+  },
+  buttonOutlined: {
+    px: 4, mt:3,
+    py: 1.2,
+    borderRadius: 3,
+    textTransform: "none",
+    fontWeight: 600,
+  },
+};

@@ -136,7 +136,7 @@ const ClassDetails = () => {
           <Box
             sx={{
               display: "flex",
-              justifyContent: "flex-end",
+              justifyContent: "flex-start",
               marginTop: "16px",
             }}
           >
