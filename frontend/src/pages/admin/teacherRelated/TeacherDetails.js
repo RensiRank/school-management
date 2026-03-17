@@ -154,7 +154,21 @@ const TeacherDetails = () => {
                             {teacherDetails?.teachSubject?.sessions || "N/A"}
                           </Typography>
                         </Box>
+
+
                       </Grid>
+<Grid item xs={12}>
+                        <Box display="flex" alignItems="center" gap={1}>
+                           <Button
+                                                              variant="outlined"
+                                                              color="secondary"
+                                                              onClick={() => navigate(-1)}
+                                                              sx={styles.buttonOutlined}
+                                                          >
+                                                              Cancel
+                                                          </Button>
+                        </Box></Grid>
+                      
                     </>
                   ) : (
                     <Grid item xs={12} mt={2}>
@@ -188,3 +202,14 @@ const TeacherDetails = () => {
 };
 
 export default TeacherDetails;
+
+const styles = {
+  buttonOutlined: {
+    px: 4, mt:3,
+    py: 1.2,
+    borderRadius: 3,
+    textTransform: "none",
+    fontWeight: 600,
+    margin:"auto",
+  },
+};
