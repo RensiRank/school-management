@@ -106,8 +106,10 @@ const AddStudent = ({ situation }) => {
   >
     <CardContent>
                 <form className="registerForm" onSubmit={submitHandler}>
-                    <span className="registerTitle">Add Student</span>
-                    <label>Name</label>
+<Typography variant="h4" align="center"
+                                    gutterBottom
+                                    sx={{ fontWeight: 700, mt:"30px", color: "#3f51b5" }}>Add Student</Typography>
+                                      <label>Name</label>
                     <input className="registerInput" type="text" placeholder="Enter student's name..."
                         value={name}
                         onChange={(event) => setName(event.target.value)}
