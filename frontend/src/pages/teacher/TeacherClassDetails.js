@@ -149,7 +149,7 @@ const TeacherClassDetails = () => {
                 <div>Loading...</div>
             ) : (
                 <>
-                    <Typography variant="h4" align="center" gutterBottom>
+                    <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 700, mt:"30px", color: "#3f51b5" }}>
                         Class Details
                     </Typography>
                     {getresponse ? (
@@ -160,7 +160,7 @@ const TeacherClassDetails = () => {
                         </>
                     ) : (
                         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-                            <Typography variant="h5" gutterBottom>
+                            <Typography variant="h5" gutterBottom sx={{ ml:"20px" }}> 
                                 Students List:
                             </Typography>
 

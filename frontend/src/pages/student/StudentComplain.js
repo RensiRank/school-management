@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Box, CircularProgress, Stack, TextField, Typography } from '@mui/material';
+import { Box, Button, Card, CardContent, CircularProgress, Stack, TextField, Typography } from '@mui/material';
 import Popup from '../../components/Popup';
-import { BlueButton } from '../../components/buttonStyles';
 import { addStuff } from '../../redux/userRelated/userHandle';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const StudentComplain = () => {
     const [complaint, setComplaint] = useState("");
     const [date, setDate] = useState("");
+    const navigate = useNavigate()
 
     const dispatch = useDispatch()
 
@@ -54,20 +55,23 @@ const StudentComplain = () => {
                     flex: '1 1 auto',
                     alignItems: 'center',
                     display: 'flex',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    mt:"80px",
                 }}
             >
-                <Box
-                    sx={{
-                        maxWidth: 550,
-                        px: 3,
-                        py: '100px',
-                        width: '100%'
-                    }}
-                >
+       <Card
+            sx={{
+            maxWidth: 550,
+            width: "100%",
+            p: 3,
+            boxShadow: 3,
+            borderRadius: 3
+            }} >
+            <CardContent>
                     <div>
                         <Stack spacing={1} sx={{ mb: 3 }}>
-                            <Typography variant="h4">Complain</Typography>
+                            <Typography variant="h4" align="center" gutterBottom
+                                sx={{ fontWeight: 700, color: "#3f51b5" }}>Complain</Typography>
                         </Stack>
                         <form onSubmit={submitHandler}>
                             <Stack spacing={3}>
@@ -94,19 +98,28 @@ const StudentComplain = () => {
                                     maxRows={4}
                                 />
                             </Stack>
-                            <BlueButton
-                                fullWidth
-                                size="large"
-                                sx={{ mt: 3 }}
-                                variant="contained"
-                                type="submit"
-                                disabled={loader}
-                            >
-                                {loader ? <CircularProgress size={24} color="inherit" /> : "Add"}
-                            </BlueButton>
+                          <Box display="flex" justifyContent="center" gap={2}>
+                                <Button
+                                    variant="outlined"
+                                    color="secondary"
+                                    onClick={() => navigate(-1)}
+                                    sx={styles.buttonOutlined}
+                                >
+                                    Cancel
+                                </Button>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    type="submit"
+                                    disabled={loader}
+                                    sx={styles.buttonFilled}
+                                    >
+                                    {loader ? <CircularProgress size={24} color="inherit" /> : "Add"}
+                                </Button>
+                            </Box>
                         </form>
                     </div>
-                </Box>
+                  </CardContent></Card>
             </Box>
             <Popup message={message} setShowPopup={setShowPopup} showPopup={showPopup} />
         </>
@@ -114,3 +127,21 @@ const StudentComplain = () => {
 };
 
 export default StudentComplain;
+
+const styles = {
+    buttonFilled: {
+    mt:3,
+    px: 4,
+    py: 1.2,
+    borderRadius: 3,
+    textTransform: "none",
+    fontWeight: 600,
+  },
+  buttonOutlined: {
+    px: 4, mt:3,
+    py: 1.2,
+    borderRadius: 3,
+    textTransform: "none",
+    fontWeight: 600,
+  },
+};

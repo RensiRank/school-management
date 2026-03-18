@@ -46,7 +46,7 @@ const StudentSubjects = () => {
     const renderTableSection = () => {
         return (
             <>
-                <Typography variant="h4" align="center" gutterBottom>
+              <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 700, mt:"25px", color: "#3f51b5" }}>
                     Subject Marks
                 </Typography>
                 <Table>

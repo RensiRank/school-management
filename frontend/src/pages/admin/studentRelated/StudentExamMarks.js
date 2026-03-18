@@ -121,7 +121,7 @@ const StudentExamMarks = ({ situation }) => {
                                     Student Name: {userDetails.name}
                                 </Typography>
                                 {currentUser.teachSubject &&
-                                    <Typography variant="h4">
+                                    <Typography variant="h4"  sx={{ fontWeight: 700, color: "#3f51b5" }}>
                                         Subject Name: {currentUser.teachSubject?.subName}
                                     </Typography>
                                 }
