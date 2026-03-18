@@ -117,13 +117,13 @@ const StudentAttendance = ({ situation }) => {
                         >
                         <CardContent>
                             <Stack spacing={1} sx={{ mb: 3 }}>
-                                <Typography variant="h4" align="center"
+                                <Typography variant="h4"
                                     gutterBottom
                                     sx={{ fontWeight: 700, color: "#3f51b5" }}>
                                     Student Name: {userDetails.name}
                                 </Typography>
                                 {currentUser.teachSubject &&
-                                    <Typography variant="h4">
+                                    <Typography variant="h4" sx={{ fontWeight: 700, color: "#3f51b5" }}>
                                         Subject Name: {currentUser.teachSubject?.subName}
                                     </Typography>
                                 }
