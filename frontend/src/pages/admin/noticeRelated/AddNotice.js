@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addStuff } from '../../../redux/userRelated/userHandle';
 import { underControl } from '../../../redux/userRelated/userSlice';
-import { CircularProgress } from '@mui/material';
+import { Box, Button, Card, CardContent, CircularProgress, Typography } from '@mui/material';
 import Popup from '../../../components/Popup';
 
 const AddNotice = () => {
@@ -43,9 +43,29 @@ const AddNotice = () => {
 
   return (
     <>
-      <div className="register">
+  <Box
+                                sx={{
+                                    flex: '1 1 auto',
+                                    alignItems: 'center',
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                   mt:"80px",
+                                }}
+                            >
+       <Card
+    sx={{
+      maxWidth: 550,
+      width: "100%",
+      p: 3,
+      boxShadow: 3,
+      borderRadius: 3
+    }}
+  >
+    <CardContent>
         <form className="registerForm" onSubmit={submitHandler}>
-          <span className="registerTitle">Add Notice</span>
+          <Typography variant="h4" align="center"
+                                    gutterBottom
+                                    sx={{ fontWeight: 700, mt:"30px", color: "#3f51b5" }}>Add Notice</Typography>
           <label>Title</label>
           <input className="registerInput" type="text" placeholder="Enter notice title..."
             value={title}
@@ -64,18 +84,48 @@ const AddNotice = () => {
             onChange={(event) => setDate(event.target.value)}
             required />
 
-          <button className="registerButton" type="submit" disabled={loader}>
-            {loader ? (
-              <CircularProgress size={24} color="inherit" />
-            ) : (
-              'Add'
-            )}
-          </button>
+            <Box display="flex" justifyContent="center" gap={2}>
+                <Button
+                    variant="outlined"
+                    color="secondary"
+                    onClick={() => navigate(-1)}
+                    sx={styles.buttonOutlined}
+                >
+                    Cancel
+                </Button>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                    disabled={loader}
+                    sx={styles.buttonFilled}
+                    >
+                    {loader ? <CircularProgress size={24} color="inherit" /> : "Add"}
+                </Button>
+                </Box>
         </form>
-      </div>
+    </CardContent></Card></Box>
       <Popup message={message} setShowPopup={setShowPopup} showPopup={showPopup} />
     </>
   );
 };
 
 export default AddNotice;
+
+const styles = {
+      buttonFilled: {
+        mt:3,
+    px: 4,
+    py: 1.2,
+    borderRadius: 3,
+    textTransform: "none",
+    fontWeight: 600,
+  },
+  buttonOutlined: {
+    px: 4, mt:3,
+    py: 1.2,
+    borderRadius: 3,
+    textTransform: "none",
+    fontWeight: 600,
+  },
+};
