@@ -87,29 +87,29 @@ const AddStudent = ({ situation }) => {
     return (
         <>
             <Box
-                                sx={{
-                                    flex: '1 1 auto',
-                                    alignItems: 'center',
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                   mt:"80px",
-                                }}
-                            >
-       <Card
-    sx={{
-      maxWidth: 550,
-      width: "100%",
-      p: 3,
-      boxShadow: 3,
-      borderRadius: 3
-    }}
-  >
-    <CardContent>
+                sx={{
+                    flex: '1 1 auto',
+                    alignItems: 'center',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    mt:"80px",
+                }}
+            >
+                <Card
+                sx={{
+                maxWidth: 550,
+                width: "100%",
+                p: 3,
+                boxShadow: 3,
+                borderRadius: 3
+                }}
+                >
+                <CardContent>
                 <form className="registerForm" onSubmit={submitHandler}>
-<Typography variant="h4" align="center"
-                                    gutterBottom
-                                    sx={{ fontWeight: 700, mt:"30px", color: "#3f51b5" }}>Add Student</Typography>
-                                      <label>Name</label>
+                    <Typography variant="h4" align="center"
+                        gutterBottom
+                        sx={{ fontWeight: 700, mt:"30px", color: "#3f51b5" }}>Add Student</Typography>
+                        <label>Name</label>
                     <input className="registerInput" type="text" placeholder="Enter student's name..."
                         value={name}
                         onChange={(event) => setName(event.target.value)}

@@ -5,7 +5,7 @@ import { getSubjectDetails } from '../../../redux/sclassRelated/sclassHandle';
 import Popup from '../../../components/Popup';
 import { registerUser } from '../../../redux/userRelated/userHandle';
 import { underControl } from '../../../redux/userRelated/userSlice';
-import { CircularProgress } from '@mui/material';
+import { Box, Button, Card, CardContent, CircularProgress, Typography } from '@mui/material';
 
 const AddTeacher = () => {
   const params = useParams()
@@ -60,10 +60,29 @@ const AddTeacher = () => {
   }, [status, navigate, error, response, dispatch]);
 
   return (
-    <div>
-      <div className="register">
+    <>
+     <Box
+                                sx={{
+                                    flex: '1 1 auto',
+                                    alignItems: 'center',
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                   mt:"80px",
+                                }}
+                            >
+       <Card
+    sx={{
+      maxWidth: 550,
+      width: "100%",
+      p: 3,
+      boxShadow: 3,
+      borderRadius: 3
+    }}
+  >
+    <CardContent>
         <form className="registerForm" onSubmit={submitHandler}>
-          <span className="registerTitle">Add Teacher</span>
+          <Typography variant="h4" align="center"
+            gutterBottom  sx={{ fontWeight: 700, mt:"30px", color: "#3f51b5" }}>Add Teacher</Typography>
           <br />
           <label>
             Subject : {subjectDetails && subjectDetails.subName}
@@ -89,18 +108,48 @@ const AddTeacher = () => {
             onChange={(event) => setPassword(event.target.value)}
             autoComplete="new-password" required />
 
-          <button className="registerButton" type="submit" disabled={loader}>
-            {loader ? (
-              <CircularProgress size={24} color="inherit" />
-            ) : (
-              'Register'
-            )}
-          </button>
+         <Box display="flex" justifyContent="center" gap={2}>
+                <Button
+                    variant="outlined"
+                    color="secondary"
+                    onClick={() => navigate(-1)}
+                    sx={styles.buttonOutlined}
+                >
+                    Cancel
+                </Button>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                    disabled={loader}
+                    sx={styles.buttonFilled}
+                    >
+                    {loader ? <CircularProgress size={24} color="inherit" /> : "Register"}
+                </Button>
+                </Box>
         </form>
-      </div>
+</CardContent></Card></Box>
       <Popup message={message} setShowPopup={setShowPopup} showPopup={showPopup} />
-    </div>
+    </>
   )
 }
 
-export default AddTeacher
+export default AddTeacher;
+
+const styles = {
+      buttonFilled: {
+        mt:3,
+    px: 4,
+    py: 1.2,
+    borderRadius: 3,
+    textTransform: "none",
+    fontWeight: 600,
+  },
+  buttonOutlined: {
+    px: 4, mt:3,
+    py: 1.2,
+    borderRadius: 3,
+    textTransform: "none",
+    fontWeight: 600,
+  },
+};
